@@ -81,6 +81,8 @@ void WiFiManager::addParameter(WiFiManagerParameter *p) {
 void WiFiManager::setupConfigPortal() {
   dnsServer.reset(new DNSServer());
   server.reset(new ESP8266WebServer(80));
+  ota.reset(new ESP8266HTTPUpdateServer());
+  ota->setup(server.get(), _ota_user, _ota_pass);
 
   DEBUG_WM(F(""));
   _configPortalStart = millis();
@@ -231,6 +233,7 @@ boolean  WiFiManager::startConfigPortal(char const *apName, char const *apPasswo
 
   server.reset();
   dnsServer.reset();
+  //ota->setup(server.get(), _ota_user, _ota_pass);
 
   return  WiFi.status() == WL_CONNECTED;
 }
@@ -775,4 +778,9 @@ String WiFiManager::toStringIp(IPAddress ip) {
   }
   res += String(((ip >> 8 * 3)) & 0xFF);
   return res;
+}
+
+void WiFiManager::setOtaUser(const char * user, const char * pass){
+  _ota_user = user;
+  _ota_pass = pass;
 }
