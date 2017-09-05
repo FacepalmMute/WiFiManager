@@ -1,4 +1,4 @@
-# WiFiManager
+# WiFiManager + OTA
 ESP8266 WiFi Connection manager with fallback web configuration portal
 
 [![Build Status](https://travis-ci.org/tzapu/WiFiManager.svg?branch=master)](https://travis-ci.org/tzapu/WiFiManager)
