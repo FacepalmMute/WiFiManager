@@ -784,3 +784,7 @@ void WiFiManager::setOtaUser(const char * user, const char * pass){
   _ota_user = user;
   _ota_pass = pass;
 }
+
+boolean WiFiManager::getConnectionState(){
+  return connect;
+}

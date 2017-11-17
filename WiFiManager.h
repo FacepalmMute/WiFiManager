@@ -113,6 +113,8 @@ class WiFiManager
     //set new user and passwort for ota update
     void          setOtaUser(const char* user, const char * pass);
 
+    boolean       getConnectionState();
+
   private:
     std::unique_ptr<DNSServer>        dnsServer;
     std::unique_ptr<ESP8266WebServer> server;
